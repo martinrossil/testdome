@@ -1,0 +1,23 @@
+{
+  "name": "testdome",
+  "version": "1.0.0",
+  "description": "Testing with TestDome",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "live-server --open=src/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martinrossil/testdome.git"
+  },
+  "author": "Martin Rossil",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/martinrossil/testdome/issues"
+  },
+  "homepage": "https://github.com/martinrossil/testdome#readme",
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}

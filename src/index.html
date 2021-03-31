@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script
+            src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+            crossorigin="anonymous">
+        </script>
+        <script>
+            function validateInput() {
+                const delighted = document.getElementById('delighted');
+                const donate = document.getElementById('donate');
+                const notDelighted = document.getElementById('not-delighted');
+                const reason = document.getElementById('reason');
+                const error = document.getElementsByClassName('error-message')[0];
+
+                let rule1 = true;
+                let rule2 = true;
+
+                if (donate.checked) {
+                    rule1 = delighted.checked;
+                }
+                
+                if (notDelighted.checked) {
+                    rule2 = reason.value !== '';
+                }
+
+                if (rule1 && rule2) {
+                    error.innerText = '';
+                } else if (!rule1 && rule2) {
+                    error.innerText = 'RULE ONE BROKEN';
+                } else if (rule1 && !rule2) {
+                    error.innerText = 'RULE TWO BROKEN';
+                } else {
+                    error.innerText = 'BOTH RULES BROKEN';
+                }
+
+                return rule1 && rule2;
+            }
+
+            document.body.innerHTML = `
+            <div class="error-message">
+            <!-- Display error message here -->
+            </div>
+
+            <form id="feedback" onsubmit="return validateInput()">
+            <input type="radio" id="delighted" name="delighted" checked="checked" required /> Delighted
+            <input type="checkbox" id="donate" name="donate" /> Donate<br />
+            <input type="radio" id="not-delighted" name="delighted" required /> Not delighted
+            <input type="text" id="reason" name="reason" /> Reason<br />
+            <input type="submit" value="Submit" />
+            </form>`;
+
+            validateInput();
+
+            console.log($(".error-message").html());
+        </script>
+    </body>
+</html>
